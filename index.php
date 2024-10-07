@@ -1,7 +1,11 @@
 <?php
-require './functions.php';
+require __DIR__ . '/./functions.php';
 
-if (isset($_GET['passwordLength']))
+if (isset($_GET['passwordLength'])) {
+
+    session_start();
+    $_SESSION["password"] = generatePassword($_GET['passwordLength']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -23,19 +27,10 @@ if (isset($_GET['passwordLength']))
 <body>
     <main class="container">
         <div class="card-general card">
-            <h1>Password Generator</h1>
-            <div class="container">
-                <div class="card-result card">
-                    <div class="container result">
-                        <?php
-                    if (isset($_GET['passwordLength'])) echo generatePassword($_GET['passwordLength']);
-                        ?>
-                    </div>
-                </div>
-            </div>
+            <h1 class="my-3">Password Generator</h1>
             <div class="container">
                 <div class="card-form card px-3">
-                    <form action="index.php" method="GET">
+                    <form action="./passwordResult.php" method="GET">
                         <label class="my-3" for="passwordLength">Inserisci la lunghezza desiderata per la tua
                             password</label>
                         <input type="number" name="passwordLength" min=1 max=20><br>

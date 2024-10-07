@@ -27,7 +27,7 @@ function generatePassword($wordLength)
     for ($i = 0; $i < $wordLength; $i++) {
         $randomIndex = random_int(0, count($totalCharacters) - 1);
         $password .= $totalCharacters[$randomIndex];
-        $passwordToPrint = "\"{$password}\"";
+        $passwordToPrint = "{$password}";
     }
 
     return $passwordToPrint;
