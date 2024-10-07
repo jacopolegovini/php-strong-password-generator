@@ -28,7 +28,7 @@ if (isset($_GET['passwordLength'])) {
     <main class="container">
         <div class="card-general card">
             <h1 class="my-3">Password Generator</h1>
-            <div class="container">
+            <div class="container d-flex justify-content-center">
                 <div class="card-form card px-3">
                     <form action="./passwordResult.php" method="GET">
                         <label class="my-3" for="passwordLength">Inserisci la lunghezza desiderata per la tua

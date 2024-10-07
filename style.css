@@ -7,6 +7,10 @@ h1 {
     color: #828F9D;
 }
 
+form {
+    text-align: center;
+}
+
 input {
     border-radius: 10px;
     margin-left: 10px;
@@ -21,9 +25,24 @@ input {
 }
 
 .card-result {
-    padding: 10px 0;
+    background-color: #001731;
+    width: 1000px;
+    height: 500px;
+}
+
+.card-result-text {
+    margin: 10px 10px;
+    width: 90%;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+    font-weight: bold;
 }
 
 .result {
     font-weight: bold;
+}
+
+.card-result-specific {
+    width: 500px;
 }
