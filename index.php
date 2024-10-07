@@ -13,34 +13,44 @@ if (isset($_GET['passwordLength']))
     <title>Password Generator</title>
 
     <!-- Bootstrap -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"
-        integrity="sha512-ykZ1QQr0Jy/4ZkvKuqWn4iF3lqPZyij9iRv6sGqLRdTPkY69YX6+7wvVGmsdBbiIfN/8OdsI7HABjvEok6ZopQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!-- Style -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <main>
-        <h1>Password Generator</h1>
-        <form action="index.php" method="GET">
-            <label for="passwordLength">Inserisci la lunghezza desiderata per la tua password</label>
-            <input type="number" name="passwordLength" min=1 max=20><br>
+    <main class="container">
+        <div class="card-general card">
+            <h1>Password Generator</h1>
+            <div class="container">
+                <div class="card-result card">
+                    <div class="container result">
+                        <?php
+                    if (isset($_GET['passwordLength'])) echo generatePassword($_GET['passwordLength']);
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="card-form card px-3">
+                    <form action="index.php" method="GET">
+                        <label class="my-3" for="passwordLength">Inserisci la lunghezza desiderata per la tua
+                            password</label>
+                        <input type="number" name="passwordLength" min=1 max=20><br>
 
-            <label for="addUppercase">Lettere Maiuscole</label>
-            <input type="checkbox" name="addUppercase"><br>
-            <label for="addNumbers">Numeri</label>
-            <input type="checkbox" name="addNumbers"><br>
-            <label for="addSymbols">Simboli</label>
-            <input type="checkbox" name="addSymbols"><br>
+                        <label for="addUppercase">Lettere Maiuscole</label>
+                        <input type="checkbox" name="addUppercase" checked><br>
+                        <label for="addNumbers">Numeri</label>
+                        <input type="checkbox" name="addNumbers" checked><br>
+                        <label for="addSymbols">Simboli</label>
+                        <input type="checkbox" name="addSymbols" checked><br>
 
-            <button>Genera</button>
-        </form>
-        <div class="result">
-            <?php
-        if (isset($_GET['passwordLength'])) echo generatePassword($_GET['passwordLength']);
-            ?>
+                        <button class="btn btn-primary my-3">Genera</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </main>
 </body>

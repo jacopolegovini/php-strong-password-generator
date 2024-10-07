@@ -1,0 +1,25 @@
+main {
+    padding: 40px;
+}
+
+h1 {
+    text-align: center;
+    color: #828F9D;
+}
+
+input {
+    border-radius: 10px;
+    margin-left: 10px;
+}
+
+.card {
+    margin: 10px 0;
+}
+
+.card-general {
+    background-color: #001731;
+}
+
+.card-result {
+    padding: 10px 0;
+}
