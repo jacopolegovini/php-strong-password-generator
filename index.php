@@ -2,19 +2,23 @@
 
 if (isset($_GET['passwordLength'])) {
     $wordLength = $_GET['passwordLength'];
-    var_dump($wordLength);
+
+    $password = '';
+    $lowercase = range('a', 'z');
+    $uppercase = range('A', 'Z');
+    $numbers = range(0, 9);
+    $symbols = explode(" ", "| ! $ % & / ( ) = ? ^ * - + _ : ; . ,");
+
+    $totalCharacters = implode($lowercase) . implode($uppercase) . implode($numbers) . implode($symbols);
+
+    $totalCharacters = str_split($totalCharacters);
+
+    for ($i = 0; $i < $wordLength; $i++) {
+        $randomIndex = random_int(0, count($totalCharacters) - 1);
+        $password = $password . $totalCharacters[$randomIndex];
+    }
+    var_dump($password);
 }
-
-$lowercase = range('a', 'z');
-$uppercase = range('A', 'Z');
-$numbers = range(0, 9);
-$symbols = explode(" ", "| ! £ $ % & / ( ) = ? ^ * - + _ : ; . ,");
-
-$totalCharacters = implode($lowercase) . implode($uppercase) . implode($numbers) . implode($symbols);
-
-var_dump($totalCharacters);
-
-
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +46,14 @@ var_dump($totalCharacters);
             <input type="number" name="passwordLength" min=1 max=20>
             <button>Genera</button>
         </form>
+        <div class="result">
+            "<?php
+                if (isset($_GET['passwordLength'])) {
 
+                    echo $password;
+                }
+                ?>"
+        </div>
     </main>
 </body>
 
