@@ -15,9 +15,10 @@ if (isset($_GET['passwordLength'])) {
 
     for ($i = 0; $i < $wordLength; $i++) {
         $randomIndex = random_int(0, count($totalCharacters) - 1);
-        $password = $password . $totalCharacters[$randomIndex];
+        $password .= $totalCharacters[$randomIndex];
     }
-    var_dump($password);
+
+    $passwordToPrint = "\"{$password}\"";
 }
 ?>
 
@@ -47,12 +48,9 @@ if (isset($_GET['passwordLength'])) {
             <button>Genera</button>
         </form>
         <div class="result">
-            "<?php
-                if (isset($_GET['passwordLength'])) {
-
-                    echo $password;
-                }
-                ?>"
+            <?php
+            if (isset($_GET['passwordLength'])) echo $passwordToPrint;
+            ?>
         </div>
     </main>
 </body>
