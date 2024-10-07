@@ -1,25 +1,7 @@
 <?php
+require './functions.php';
 
-if (isset($_GET['passwordLength'])) {
-    $wordLength = $_GET['passwordLength'];
-
-    $password = '';
-    $lowercase = range('a', 'z');
-    $uppercase = range('A', 'Z');
-    $numbers = range(0, 9);
-    $symbols = explode(" ", "| ! $ % & / ( ) = ? ^ * - + _ : ; . ,");
-
-    $totalCharacters = implode($lowercase) . implode($uppercase) . implode($numbers) . implode($symbols);
-
-    $totalCharacters = str_split($totalCharacters);
-
-    for ($i = 0; $i < $wordLength; $i++) {
-        $randomIndex = random_int(0, count($totalCharacters) - 1);
-        $password .= $totalCharacters[$randomIndex];
-    }
-
-    $passwordToPrint = "\"{$password}\"";
-}
+if (isset($_GET['passwordLength']))
 ?>
 
 <!DOCTYPE html>
@@ -44,12 +26,20 @@ if (isset($_GET['passwordLength'])) {
         <h1>Password Generator</h1>
         <form action="index.php" method="GET">
             <label for="passwordLength">Inserisci la lunghezza desiderata per la tua password</label>
-            <input type="number" name="passwordLength" min=1 max=20>
+            <input type="number" name="passwordLength" min=1 max=20><br>
+
+            <label for="addUppercase">Lettere Maiuscole</label>
+            <input type="checkbox" name="addUppercase"><br>
+            <label for="addNumbers">Numeri</label>
+            <input type="checkbox" name="addNumbers"><br>
+            <label for="addSymbols">Simboli</label>
+            <input type="checkbox" name="addSymbols"><br>
+
             <button>Genera</button>
         </form>
         <div class="result">
             <?php
-            if (isset($_GET['passwordLength'])) echo $passwordToPrint;
+        if (isset($_GET['passwordLength'])) echo generatePassword($_GET['passwordLength']);
             ?>
         </div>
     </main>
