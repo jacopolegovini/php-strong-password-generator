@@ -5,6 +5,14 @@ if (isset($_GET['passwordLength'])) {
     var_dump($wordLength);
 }
 
+$lowercase = range('a', 'z');
+$uppercase = range('A', 'Z');
+$numbers = range(0, 9);
+$symbols = explode(" ", "| ! £ $ % & / ( ) = ? ^ * - + _ : ; . ,");
+
+$totalCharacters = implode($lowercase) . implode($uppercase) . implode($numbers) . implode($symbols);
+
+var_dump($totalCharacters);
 
 
 ?>
